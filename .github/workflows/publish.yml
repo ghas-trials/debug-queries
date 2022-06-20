@@ -41,4 +41,4 @@ jobs:
          gh extensions install zbazztian/gh-tailor
          gh codeql download v${{ needs.determine-actions-cli-version.outputs.version }}
          gh codeql set-version v${{ needs.determine-actions-cli-version.outputs.version }}
-         ./test "${{ matrix.language }}"
+         ./publish "${{ matrix.language }}"
