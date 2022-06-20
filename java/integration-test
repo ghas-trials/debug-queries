@@ -2,6 +2,7 @@
 set -eu
 cd -- "$(dirname -- "$0")"
 
+rm -rf integration-tests
 mkdir -p integration-tests/src
 cat << EOF > integration-tests/src/Test.java
 public class Test{
@@ -13,7 +14,7 @@ EOF
 
 gh codeql \
   database create \
-  --overwrite \
+  --threads 0 \
   -l java \
   -s integration-tests/src \
   -c 'javac Test.java' \
@@ -21,6 +22,7 @@ gh codeql \
 
 gh codeql \
   database analyze \
+  --threads 0 \
   --additional-packs pack \
   --format csv \
   --output integration-tests/results.csv \
