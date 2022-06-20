@@ -3,8 +3,7 @@ name: "Pull Request Checks"
 on:
   pull_request:
     branches: [ main ]
-    #paths:
-    #  - 'java/**'
+  workflow_dispatch:
 
 jobs:
   determine-actions-cli-version:
@@ -17,8 +16,7 @@ jobs:
       uses: github/codeql-action/init@v2
     - id: cliversion
       run: |
-        echo "::set-output name=v::$("${{ steps.downloadcli.outputs.codeql-path }}" version -q)"
-
+        echo "::set-output name=v::"$(${{ steps.downloadcli.outputs.codeql-path }} version -q)
 
   build-and-test-packs:
     name: Build and Test CodeQL Packs
@@ -43,4 +41,4 @@ jobs:
          gh extensions install zbazztian/gh-tailor
          gh codeql download v${{ needs.determine-actions-cli-version.outputs.version }}
          gh codeql set-version v${{ needs.determine-actions-cli-version.outputs.version }}
-         ./tests.sh "${{ matrix.language }}"
+         ./test "${{ matrix.language }}"
