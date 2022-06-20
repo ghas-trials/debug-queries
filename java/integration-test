@@ -1,0 +1,28 @@
+#!/bin/sh
+set -eu
+cd -- "$(dirname -- "$0")"
+
+mkdir -p integration-tests/src
+cat << EOF > integration-tests/src/Test.java
+public class Test{
+	public static void main(String[] args){
+		System.out.println("Hello World!");
+	}
+}
+EOF
+
+gh codeql \
+  database create \
+  --overwrite \
+  -l java \
+  -s integration-tests/src \
+  -c 'javac Test.java' \
+  integration-tests/db
+
+gh codeql \
+  database analyze \
+  --additional-packs pack \
+  --format csv \
+  --output integration-tests/results.csv \
+  integration-tests/db \
+  zbazztian/java-poc-queries
