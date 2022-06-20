@@ -1,0 +1,28 @@
+#!/bin/sh
+set -eu
+cd -- "$(dirname -- "$0")"
+
+rm -rf pack
+gh tailor download --outdir pack "codeql/java-queries"
+
+cp java-aggressive-security-and-quality.qls pack/codeql-suites/
+
+gh tailor \
+  set-pack-meta \
+  --name "zbazztian/java-poc-queries" \
+  --version "0.0.0" \
+  --default-suite "codeql-suites/java-aggressive-security-and-quality.qls" \
+  pack
+
+gh tailor \
+  set-ql-meta \
+  -m "security-severity" "9.0" \
+  pack/Security/CWE/CWE-079/XSS.ql
+
+# inject customizations
+cat <<EOF | xargs gh tailor customize pack settings.yml
+  pack/Security/CWE/CWE-079/XSS.ql
+  pack/Security/CWE/CWE-022/TaintedPath.ql
+EOF
+
+gh tailor create -i pack

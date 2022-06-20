@@ -1,0 +1,17 @@
+edges
+| Test.java:13:18:13:38 | getHostName(...) : String | Test.java:18:20:18:23 | temp |
+| Test.java:13:18:13:38 | getHostName(...) : String | Test.java:21:21:21:24 | temp |
+| Test.java:13:18:13:38 | getHostName(...) : String | Test.java:24:44:24:47 | temp |
+| Test.java:13:18:13:38 | getHostName(...) : String | Test.java:28:21:28:24 | temp |
+nodes
+| Test.java:13:18:13:38 | getHostName(...) : String | semmle.label | getHostName(...) : String |
+| Test.java:18:20:18:23 | temp | semmle.label | temp |
+| Test.java:21:21:21:24 | temp | semmle.label | temp |
+| Test.java:24:44:24:47 | temp | semmle.label | temp |
+| Test.java:28:21:28:24 | temp | semmle.label | temp |
+subpaths
+#select
+| Test.java:18:11:18:24 | new File(...) | Test.java:13:18:13:38 | getHostName(...) : String | Test.java:18:20:18:23 | temp | $@ flows to here and is used in a path. | Test.java:13:18:13:38 | getHostName(...) | User-provided value |
+| Test.java:21:11:21:25 | get(...) | Test.java:13:18:13:38 | getHostName(...) : String | Test.java:21:21:21:24 | temp | $@ flows to here and is used in a path. | Test.java:13:18:13:38 | getHostName(...) | User-provided value |
+| Test.java:24:11:24:48 | getPath(...) | Test.java:13:18:13:38 | getHostName(...) : String | Test.java:24:44:24:47 | temp | $@ flows to here and is used in a path. | Test.java:13:18:13:38 | getHostName(...) | User-provided value |
+| Test.java:28:12:28:25 | new File(...) | Test.java:13:18:13:38 | getHostName(...) : String | Test.java:28:21:28:24 | temp | $@ flows to here and is used in a path. | Test.java:13:18:13:38 | getHostName(...) | User-provided value |

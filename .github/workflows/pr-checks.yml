@@ -1,0 +1,46 @@
+name: "Pull Request Checks"
+
+on:
+  pull_request:
+    branches: [ main ]
+    #paths:
+    #  - 'java/**'
+
+jobs:
+  determine-actions-cli-version:
+    name: Determine CLI version installed in Actions
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.cliversion.outputs.v }}
+    steps:
+    - id: downloadcli
+      uses: github/codeql-action/init@v2
+    - id: cliversion
+      run: |
+        echo "::set-output name=v::$("${{ steps.downloadcli.outputs.codeql-path }}" version -q)"
+
+
+  build-and-test-packs:
+    name: Build and Test CodeQL Packs
+    runs-on: ubuntu-latest
+    needs: determine-actions-cli-version
+
+    strategy:
+      fail-fast: false
+      matrix:
+        language: [ 'java' ]
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Build and Test
+      env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+         echo ${{ needs.determine-actions-cli-version.outputs.version }}
+         gh extensions install github/gh-codeql
+         gh extensions install zbazztian/gh-tailor
+         gh codeql download v${{ needs.determine-actions-cli-version.outputs.version }}
+         gh codeql set-version v${{ needs.determine-actions-cli-version.outputs.version }}
+         ./tests.sh "${{ matrix.language }}"

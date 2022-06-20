@@ -1,0 +1,7 @@
+#!/bin/sh
+set -eu
+cd -- "$(dirname -- "$0")"
+
+lang="$1"
+"${lang}/create"
+"${lang}/test"
