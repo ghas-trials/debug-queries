@@ -1,0 +1,8 @@
+- description: Experimental queries for Java
+- queries: .
+- include:
+    kind: path-problem
+    problem.severity: recommendation
+- exclude:
+    query path:
+      - /^experimental\/.*/

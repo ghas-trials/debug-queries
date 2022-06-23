@@ -1,0 +1,5 @@
+- description: Experimental queries for Java
+- queries: .
+- include:
+    query path:
+      - /^experimental\/.*/
