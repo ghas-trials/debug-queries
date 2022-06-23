@@ -1,4 +1,4 @@
-- description: Experimental queries for Java
+- description: Security recommendation queries for Java
 - queries: .
   from: codeql/java-queries
 - include:

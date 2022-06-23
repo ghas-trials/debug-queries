@@ -1,4 +1,4 @@
-- description: Experimental queries for JavaScript
+- description: Experimental security queries for JavaScript
 - queries: .
   from: codeql/javascript-queries
 - include:
