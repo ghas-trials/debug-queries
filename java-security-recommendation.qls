@@ -1,5 +1,6 @@
 - description: Experimental queries for Java
 - queries: .
+  from: codeql/java-queries
 - include:
     kind: path-problem
     problem.severity: recommendation
