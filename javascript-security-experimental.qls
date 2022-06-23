@@ -1,0 +1,9 @@
+- description: Experimental queries for JavaScript
+- queries: .
+  from: codeql/javascript-queries
+- include:
+    kind:
+      - problem
+      - path-problem
+    query path:
+      - /^experimental\/Security\/.*/
