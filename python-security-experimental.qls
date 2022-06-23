@@ -1,6 +1,6 @@
-- description: Experimental security queries for Java
+- description: Experimental security queries for Python
 - queries: .
-  from: codeql/java-queries
+  from: codeql/python-queries
 - include:
     kind:
       - problem
