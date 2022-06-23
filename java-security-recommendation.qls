@@ -2,7 +2,10 @@
 - queries: .
   from: codeql/java-queries
 - include:
-    kind: path-problem
+    kind:
+      - problem
+      - path-problem
+    tags contain: security
     problem.severity: recommendation
 - exclude:
     query path:
