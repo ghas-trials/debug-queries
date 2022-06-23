@@ -2,5 +2,8 @@
 - queries: .
   from: codeql/java-queries
 - include:
+    kind:
+      - problem
+      - path-problem
     query path:
       - /^experimental\/.*/
