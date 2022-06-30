@@ -3,4 +3,4 @@
   from: codeql/ruby-queries
 - include:
     query path:
-      - /^experimental\/Security\/.*/
+      - /^experimental\/.*/
