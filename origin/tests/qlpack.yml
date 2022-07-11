@@ -1,0 +1,8 @@
+dependencies:
+  zbazztian/origin-python-queries: '*'
+extractor: python
+groups:
+- python
+- test
+name: zbazztian/origin-python-queries-tests
+tests: .
