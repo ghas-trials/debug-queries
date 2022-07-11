@@ -1,0 +1,5 @@
+name: "CodeQL config"
+disable-default-queries: true
+packs:
+  java:
+    - zbazztian/origin-python-queries:codeql-suites/python-security-and-quality.qls
