@@ -1,6 +1,0 @@
-- description: Experimental security queries for Ruby
-- queries: .
-  from: codeql/ruby-queries
-- include:
-    query path:
-      - /^experimental\/.*/
