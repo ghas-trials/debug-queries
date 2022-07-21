@@ -2,4 +2,4 @@ name: "CodeQL config"
 disable-default-queries: true
 packs:
   java:
-    - zbazztian/java-poc-queries:codeql-suites/java-aggressive-security-and-quality.qls
+    - ghas-trials/java-poc-queries:codeql-suites/java-aggressive-security-and-quality.qls

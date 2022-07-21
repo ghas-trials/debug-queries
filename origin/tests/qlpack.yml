@@ -1,8 +1,8 @@
 dependencies:
-  zbazztian/origin-python-queries: '*'
+  ghas-trials/origin-python-queries: '*'
 extractor: python
 groups:
 - python
 - test
-name: zbazztian/origin-python-queries-tests
+name: ghas-trials/origin-python-queries-tests
 tests: .

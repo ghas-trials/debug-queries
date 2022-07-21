@@ -8,7 +8,7 @@ gh tailor download --outdir pack "codeql/python-queries"
 
 gh tailor \
   set-pack-meta \
-  --name "zbazztian/origin-python-queries" \
+  --name "ghas-trials/origin-python-queries" \
   --version "0.0.0" \
   --default-suite "codeql-suites/python-code-scanning.qls" \
   pack

@@ -27,4 +27,4 @@ gh codeql \
   --format csv \
   --output integration-tests/results.csv \
   integration-tests/db \
-  zbazztian/java-poc-queries
+  ghas-trials/java-poc-queries

@@ -9,7 +9,7 @@ cp java-aggressive-security-and-quality.qls pack/codeql-suites/
 
 gh tailor \
   set-pack-meta \
-  --name "zbazztian/java-poc-queries" \
+  --name "ghas-trials/java-poc-queries" \
   --version "0.0.0" \
   --default-suite "codeql-suites/java-aggressive-security-and-quality.qls" \
   pack

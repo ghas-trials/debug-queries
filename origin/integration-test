@@ -21,4 +21,4 @@ gh codeql \
   --format csv \
   --output "$results" \
   "$db" \
-  "zbazztian/origin-python-queries"
+  "ghas-trials/origin-python-queries"
