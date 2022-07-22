@@ -1,0 +1,8 @@
+- description: Diagnostic Security Queries for Java
+- queries: '.'
+- include:
+    query path:
+      - /^Security\/.*/
+- include:
+    id:
+      - java/dependencies-debug
