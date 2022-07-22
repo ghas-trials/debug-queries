@@ -1,4 +1,6 @@
 /**
+ * @name List of external dependencies
+ * @description Print a list of external dependencies with usage count.
  * @id java/dependencies-debug
  * @kind diagnostic
  */
