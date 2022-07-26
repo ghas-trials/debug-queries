@@ -1,0 +1,8 @@
+- description: Diagnostic Security Queries for JavaScript
+- queries: '.'
+- include:
+    query path:
+      - /^Security\/.*/
+- include:
+    id:
+      - js/dependencies-debug
