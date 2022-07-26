@@ -75,7 +75,7 @@ DebugNode debugNodes(string configName, string type) {
   configName = result.getConfigName() and type = result.getNodeType()
 }
 
-module optionalthings{
+module verbose{
   query predicate sources(string loc, string configName) {
     loc =
       any(DebugSource ds | ds.getConfigName() = configName).getLocation().getFile().getRelativePath()
