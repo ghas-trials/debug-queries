@@ -1,5 +1,0 @@
-name: "CodeQL config"
-disable-default-queries: true
-packs:
-  java:
-    - ghas-trials/java-poc-queries:codeql-suites/java-aggressive-security-and-quality.qls

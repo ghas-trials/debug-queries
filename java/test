@@ -7,4 +7,3 @@ if [ ! -d "pack" ]; then
   exit 1
 fi
 
-gh tailor test pack tests

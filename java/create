@@ -5,24 +5,36 @@ cd -- "$(dirname -- "$0")"
 rm -rf pack
 gh tailor download --outdir pack "codeql/java-queries"
 
-cp java-aggressive-security-and-quality.qls pack/codeql-suites/
+mkdir -p pack/tailor
+cp SourcesAndSinks.qll pack/tailor/
+cp dependencies.ql pack/
+cp debug.qls pack/codeql-suites/
 
 gh tailor \
   set-pack-meta \
-  --name "ghas-trials/java-poc-queries" \
+  --name "ghas-trials/java-debug-queries" \
   --version "0.0.0" \
-  --default-suite "codeql-suites/java-aggressive-security-and-quality.qls" \
+  --default-suite "codeql-suites/debug.qls" \
   pack
 
-gh tailor \
-  set-ql-meta \
-  -m "security-severity" "9.0" \
-  pack/Security/CWE/CWE-079/XSS.ql
-
-# inject customizations
-cat <<EOF | xargs gh tailor customize pack settings.yml
-  pack/Security/CWE/CWE-079/XSS.ql
-  pack/Security/CWE/CWE-022/TaintedPath.ql
-EOF
+find pack/Security/CWE -name '*.ql' -type f | while read f; do
+  perl -i -0777 -p -e 's/^\s*(from\s+.*?\s+(where\s+.*?\s+)?)?select\s+.*//ms' "$f"
+  perl -i -0777 -p -e 's/^import (DataFlow::)?PathGraph$//ms' "$f"
+  gh tailor ql-import -m "tailor.SourcesAndSinks" "$f"
+  id="$(gh codeql \
+          resolve metadata \
+          --format json \
+          "$f" \
+          | jq -r '.id')"
+  id="${id}-debug"
+  gh tailor \
+    set-ql-meta \
+    -m "kind" "diagnostic" \
+    -m "id" "$id" \
+    -d "security-severity" \
+    -d "problem.severity" \
+    -d "precision" \
+    "$f"
+done
 
 gh tailor create -i pack

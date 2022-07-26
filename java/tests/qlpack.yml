@@ -1,8 +1,0 @@
-dependencies:
-  ghas-trials/java-poc-queries: '*'
-extractor: java
-groups:
-- java
-- test
-name: ghas-trials/java-poc-queries-tests
-tests: .

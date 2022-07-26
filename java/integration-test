@@ -2,29 +2,24 @@
 set -eu
 cd -- "$(dirname -- "$0")"
 
-rm -rf integration-tests
-mkdir -p integration-tests/src
-cat << EOF > integration-tests/src/Test.java
-public class Test{
-	public static void main(String[] args){
-		System.out.println("Hello World!");
-	}
-}
-EOF
+db="integration_test_db"
+results="integration_test_results.csv"
+rm -rf "$db" "$results"
 
 gh codeql \
   database create \
   --threads 0 \
-  -l java \
-  -s integration-tests/src \
-  -c 'javac Test.java' \
-  integration-tests/db
+  -l "java" \
+  -s integration_test_code \
+  -c "./compile" \
+  "$db"
 
 gh codeql \
   database analyze \
   --threads 0 \
   --additional-packs pack \
   --format csv \
-  --output integration-tests/results.csv \
-  integration-tests/db \
-  ghas-trials/java-poc-queries
+  -vvv \
+  --output "$results" \
+  "$db" \
+  "ghas-trials/java-debug-queries"

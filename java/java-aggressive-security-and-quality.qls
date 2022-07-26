@@ -1,9 +1,0 @@
-- description: Security-and-quality queries for Java
-- queries: .
-- apply: security-and-quality-selectors.yml
-  from: codeql/suite-helpers
-- include:
-    tags contain: security
-- exclude:
-    id:
-      - java/count-untrusted-data-external-api

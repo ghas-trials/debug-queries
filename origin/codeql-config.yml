@@ -1,5 +1,0 @@
-name: "CodeQL config"
-disable-default-queries: true
-packs:
-  python:
-    - ghas-trials/origin-python-queries:codeql-suites/python-security-and-quality.qls

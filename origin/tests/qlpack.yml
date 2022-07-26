@@ -1,8 +1,0 @@
-dependencies:
-  ghas-trials/origin-python-queries: '*'
-extractor: python
-groups:
-- python
-- test
-name: ghas-trials/origin-python-queries-tests
-tests: .
