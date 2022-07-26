@@ -28,7 +28,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'java', 'java-debug', 'origin' ]
+        language: [ 'java' ]
 
     steps:
     - name: Checkout repository
