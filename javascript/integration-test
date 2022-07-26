@@ -19,6 +19,7 @@ gh codeql \
   --threads 0 \
   --additional-packs pack \
   --format csv \
+  -vvv \
   --output "$results" \
   "$db" \
   "ghas-trials/javascript-debug-queries"
