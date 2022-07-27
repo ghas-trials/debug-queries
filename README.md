@@ -44,7 +44,8 @@ jobs:
 ```
 
 Output (excerpt):
-`2022-07-23T15:54:09.4594693Z Query 'Use of implicit PendingIntents' (java/android/implicit-pendingintents-debug) produced the following diagnostic messages:
+```
+2022-07-23T15:54:09.4594693Z Query 'Use of implicit PendingIntents' (java/android/implicit-pendingintents-debug) produced the following diagnostic messages:
 2022-07-23T15:54:09.4595307Z   * Note: "XSS::XssVulnerableWriterSourceToWritingMethodFlowConfig": 0 sources, 531 sinks
 2022-07-23T15:54:09.4595899Z   * Note: "ImplicitPendingIntentStartConf": 0 sources, 0 sinks
 2022-07-23T15:54:09.4596194Z 
@@ -68,5 +69,5 @@ Output (excerpt):
 2022-07-23T15:54:09.4604541Z   * Note: 0000  opentest4j-1.2.0
 2022-07-23T15:54:09.4604987Z   * Note: 0000  junit-platform-commons-1.6.2
 2022-07-23T15:54:09.4605394Z   * Note: 0000  guava-18.0
-2022-07-23T15:54:09.4605798Z   * Note: 0000  apiguardian-api-1.1.0``
+2022-07-23T15:54:09.4605798Z   * Note: 0000  apiguardian-api-1.1.0
 ```
