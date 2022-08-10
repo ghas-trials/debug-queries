@@ -28,4 +28,5 @@ jobs:
          gh extensions install github/gh-codeql
          gh extensions install zbazztian/gh-tailor
          gh codeql set-version "v$(gh tailor actions-cli-version)"
-         ./publish "${{ matrix.language }}"
+         cd "${{ matrix.language }}"
+         make publish
