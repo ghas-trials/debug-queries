@@ -16,7 +16,7 @@ gh tailor \
 find stage/Security/CWE -name '*.ql' -type f | while read f; do
   perl -i -0777 -p -e 's/^\s*(from\s+.*?\s+(where\s+.*?\s+)?)?select\s+.*//ms' "$f"
   perl -i -0777 -p -e 's/^import (DataFlow::)?PathGraph$//ms' "$f"
-  gh tailor ql-import -m "tailor.SourcesAndSinks" "$f"
+  gh tailor ql-import --module "tailor.SourcesAndSinks" --visible "$f"
   id="$( \
     gh codeql \
     resolve metadata \
