@@ -16,6 +16,8 @@ gh tailor \
 find stage/Security/ -name '*.ql' -type f | while read f; do
   if [ "$f" = "stage/Security/CWE-020/IncompleteUrlSubstringSanitization.ql" ]; then
     continue
+  elif [ "$f" = "stage/Security/CWE-116/IncompleteMultiCharacterSanitization.ql" ]; then
+    continue
   fi
   perl -i -0777 -p -e 's/^\s*(from\s+.*?\s+(where\s+.*?\s+)?)?select\s+.*//ms' "$f"
   perl -i -0777 -p -e 's/^\s*query\s+predicate\s+(problems|nodes|edges)\b.*//ms' "$f"
